@@ -24,18 +24,21 @@
 }
 
 /* 모바일 전용 스타일 (너비 600px 이하) */
-@media (max-width: 600px) {
-    #ui.collapsed {
-        width: 160px; /* 제목만 보일 정도의 너비 */
-        height: 25px; /* 제목 한 줄 높이 */
-        padding: 10px 15px;
+@media (max-width: 900px) {
+    #ui{
+        width: 25%;
+
+        }
+        #ui h2{
+            font-size: 0.85rem;
+
+        }
+    #ui .control-group, #ui .btn{
+        font-size: 0.7rem;
     }
-    #ui.collapsed .control-group, 
-    #ui.collapsed .btn-group,
-    #ui.collapsed p {
-        display: none; /* 접혔을 때 내용 숨김 */
-    }
+
 }
+
         h2 { margin: 0 0 10px 0; color: #f1c40f; font-size: 1.2rem; display: flex; align-items: center; gap: 8px; }
         p { margin: 0; font-size: 0.8rem; line-height: 1.5; color: #ecf0f1; }
 
@@ -51,7 +54,7 @@
             display: flex; align-items: center; justify-content: center; gap: 4px;
         }
         button:hover { background: #f39c12; transform: translateY(-2px); }
-        .btn-blue { background: #3498db; color: white; }
+        .btn { background: #3498db; color: white; }
 
         footer {
             position: absolute; bottom: 10px; width: 100%; text-align: center;
@@ -62,18 +65,18 @@
 </head>
 <body>
 
-<div id="ui" class="collapsed" onclick="event.stopPropagation(); this.classList.remove('collapsed')">
-    <h2><i class="fa-solid fa-chart-line"></i> 조석 입체 분석</h2>
+<div id="ui">
+        <h2><i class="fa-solid fa-chart-line"></i> 조석 입체 분석</h2>
     <p>우측 상단의 <span style="color:#f1c40f;">평면 분석창</span>을 클릭하여 상세한 갯벌 지도를 확인하세요.</p>
     
     <div class="control-group">
-        <span style="font-size: 0.75rem;"><i class="fa-solid fa-water"></i> 해안 경사 (완만하게)</span>
+        <span><i class="fa-solid fa-water"></i> 해안 경사 (완만하게)</span>
         <input type="range" id="slopeSlider" min="0.1" max="0.85" step="0.01" value="0.65">
     </div>
 
     <div class="btn-group">
-        <button class="btn-blue" onclick="moveTide('low')"><i class="fa-solid fa-arrow-left"></i> 썰물</button>
-        <button onclick="moveTide('high')">밀물 <i class="fa-solid fa-arrow-right"></i></button>
+        <button class="btn" onclick="moveTide('low')"><i class="fa-solid fa-arrow-left"></i> 썰물</button>
+        <button class="btn" onclick="moveTide('high')">밀물 <i class="fa-solid fa-arrow-right"></i></button>
     </div>
 </div>
 
