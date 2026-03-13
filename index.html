@@ -12,14 +12,30 @@
         }
         body { margin: 0; overflow: hidden; background: #000b1a; font-family: 'NexonMaplestory', sans-serif; color: white; }
         
-        #ui { 
-            position: absolute; top: 15px; left: 15px; 
-            background: rgba(0,0,0,0.75); padding: 15px; 
-            z-index: 10; backdrop-filter: blur(8px);
-            border-radius: 15px; border: 1px solid rgba(241, 196, 15, 0.3);
-            max-width: 300px; transition: opacity 0.3s;
-        }
+/* 기본 UI 스타일 수정 */
+#ui { 
+    position: absolute; top: 15px; left: 15px; 
+    background: rgba(0,0,0,0.75); padding: 15px; 
+    z-index: 20; backdrop-filter: blur(8px);
+    border-radius: 15px; border: 1px solid rgba(241, 196, 15, 0.3);
+    width: 280px; transition: all 0.3s ease;
+    cursor: pointer; /* 클릭 가능하다는 표시 */
+    overflow: hidden;
+}
 
+/* 모바일 전용 스타일 (너비 600px 이하) */
+@media (max-width: 600px) {
+    #ui.collapsed {
+        width: 160px; /* 제목만 보일 정도의 너비 */
+        height: 25px; /* 제목 한 줄 높이 */
+        padding: 10px 15px;
+    }
+    #ui.collapsed .control-group, 
+    #ui.collapsed .btn-group,
+    #ui.collapsed p {
+        display: none; /* 접혔을 때 내용 숨김 */
+    }
+}
         h2 { margin: 0 0 10px 0; color: #f1c40f; font-size: 1.2rem; display: flex; align-items: center; gap: 8px; }
         p { margin: 0; font-size: 0.8rem; line-height: 1.5; color: #ecf0f1; }
 
@@ -322,7 +338,7 @@ function draw() {
         requestAnimationFrame(draw);
     }
 
-    
+
 
     draw();
 </script>
